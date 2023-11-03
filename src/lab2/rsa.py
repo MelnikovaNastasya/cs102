@@ -12,7 +12,19 @@ def is_prime(n: int) -> bool:
     >>> is_prime(8)
     False
     """
-    # PUT YOUR CODE HERE
+    if n <= 1:
+        return False
+
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
     pass
 
 
@@ -24,7 +36,9 @@ def gcd(a: int, b: int) -> int:
     >>> gcd(3, 7)
     1
     """
-    # PUT YOUR CODE HERE
+    while b:
+        a, b = b, a % b
+    return a
     pass
 
 
@@ -35,7 +49,19 @@ def multiplicative_inverse(e: int, phi: int) -> int:
     >>> multiplicative_inverse(7, 40)
     23
     """
-    # PUT YOUR CODE HERE
+
+    def extended_gcd(a, b):
+        if a == 0:
+            return (b, 0, 1)
+        else:
+            g, x, y = extended_gcd(b % a, a)
+            return (g, y - (b // a) * x, x)
+
+    g, x, y = extended_gcd(e, phi)
+    if g != 1:
+        raise ValueError("The multiplicative inverse does not exist")
+    else:
+        return x % phi
     pass
 
 
@@ -46,10 +72,10 @@ def generate_keypair(p: int, q: int) -> tp.Tuple[tp.Tuple[int, int], tp.Tuple[in
         raise ValueError("p and q cannot be equal")
 
     # n = pq
-    # PUT YOUR CODE HERE
+    n = p * q
 
     # phi = (p-1)(q-1)
-    # PUT YOUR CODE HERE
+    phi = (p - 1) * (q - 1)
 
     # Choose an integer e such that e and phi(n) are coprime
     e = random.randrange(1, phi)
@@ -66,7 +92,6 @@ def generate_keypair(p: int, q: int) -> tp.Tuple[tp.Tuple[int, int], tp.Tuple[in
     # Return public and private keypair
     # Public key is (e, n) and private key is (d, n)
     return ((e, n), (d, n))
-
 
 def encrypt(pk: tp.Tuple[int, int], plaintext: str) -> tp.List[int]:
     # Unpack the key into it's components
