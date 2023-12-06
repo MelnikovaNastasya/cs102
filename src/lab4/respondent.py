@@ -57,7 +57,7 @@ def generate_age_groups(age_group_input):
     return age_groups
 
 if __name__ == "__main__":
-    age_group_input = input("Введите возрастные группы через пробел: ")
+    age_group_input = input("Введите возрастные группы: ")
     age_groups = generate_age_groups(age_group_input)
 
     file_path = 'people.txt'

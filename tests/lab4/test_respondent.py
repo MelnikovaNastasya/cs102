@@ -1,5 +1,8 @@
 import unittest
-
+import os
+import sys
+parent_dir = os.path.abspath(os.path.join(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")), ".."))
+sys.path.append(parent_dir)
 from src.lab4.respondent import Respondent, group_respondents, generate_age_groups, generate_output, parse_input, sort_respondents
 
 
