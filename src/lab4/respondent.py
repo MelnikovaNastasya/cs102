@@ -44,6 +44,7 @@ def parse_input(file_path):
 
 def generate_output(output_list):
     return "\n".join(output_list)
+
 def generate_age_groups(age_group_input):
     age_group_values = age_group_input.split()
     age_groups = []

@@ -56,7 +56,6 @@ class MovieRecommendationService:
 
         recommended_movie_id = max(movie_views_count, key=movie_views_count.get)
         recommended_movie_name = self.movies[recommended_movie_id]
-
         print("Рекомендуемый фильм:", recommended_movie_name)
 
 movies_file = 'movies.txt'
