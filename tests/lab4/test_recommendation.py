@@ -1,7 +1,8 @@
 import unittest
 
 from src.lab4.recommendation import MovieRecommendationService, history_file, movies_file
-
+history_file = 'C:/ucheba/cs102/src/lab4/history.txt'
+movies_file = 'C:/ucheba/cs102/src/lab4/movies.txt'
 
 class TestMovieRecommendationService(unittest.TestCase):
 
