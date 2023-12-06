@@ -12,7 +12,7 @@ class TestMovieRecommendationService(unittest.TestCase):
             3: 'Дюна',
             4: 'Унесенные призраками'
         }
-        recommendation_service = MovieRecommendationService(movies_file, 'history.txt')
+        recommendation_service = MovieRecommendationService(movies_file, history_file)
         result = recommendation_service.load_movies()
         self.assertEqual(result, expected_movies)
 
@@ -22,7 +22,7 @@ class TestMovieRecommendationService(unittest.TestCase):
             [1, 4, 3],
             [2, 2, 2, 2, 2, 3]
         ]
-        recommendation_service = MovieRecommendationService('movies.txt', history_file)
+        recommendation_service = MovieRecommendationService(movies_file, history_file)
         result = recommendation_service.load_history()
         self.assertEqual(result, expected_history)
 
@@ -39,7 +39,7 @@ class TestMovieRecommendationService(unittest.TestCase):
             [1, 4, 3],
             [2, 2, 2, 2, 2, 3]
         ]
-        recommendation_service = MovieRecommendationService('movies.txt', 'history.txt')
+        recommendation_service = MovieRecommendationService(movies_file, history_file)
         result = recommendation_service.filter_users(user_views)
         self.assertEqual(result, expected_filtered_users)
 
@@ -51,7 +51,7 @@ class TestMovieRecommendationService(unittest.TestCase):
             [1, 2, 4, 5]
         ]
         expected_unwatched_movies = [3, 4, 5]
-        recommendation_service = MovieRecommendationService('movies.txt', 'history.txt')
+        recommendation_service = MovieRecommendationService(movies_file, history_file)
         result = recommendation_service.exclude_watched_movies(user_views, filtered_users)
         self.assertEqual(result, expected_unwatched_movies)
 
