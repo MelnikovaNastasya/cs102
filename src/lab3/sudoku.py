@@ -202,6 +202,26 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
 
 
 def generate_sudoku(N: int) -> tp.List[tp.List[str]]:
+    """Генерация судоку заполненного на N элементов
+    >>> grid = generate_sudoku(40)
+    >>> sum(1 for row in grid for e in row if e == '.')
+    41
+    >>> solution = solve(grid)
+    >>> check_solution(solution)
+    True
+    >>> grid = generate_sudoku(1000)
+    >>> sum(1 for row in grid for e in row if e == '.')
+    0
+    >>> solution = solve(grid)
+    >>> check_solution(solution)
+    True
+    >>> grid = generate_sudoku(0)
+    >>> sum(1 for row in grid for e in row if e == '.')
+    81
+    >>> solution = solve(grid)
+    >>> check_solution(solution)
+    True
+    """
     grid = [['.' for i in range(9)] for i in range(9)]
 
     for i in range(N):
