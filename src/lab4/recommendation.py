@@ -15,7 +15,7 @@ class MovieRecommendationService:
 
     def load_history(self):
         history = []
-        with open(self.history_file, 'r') as file:
+        with open(self.history_file, 'r', encoding="utf-8") as file:
             for line in file:
                 viewed_movies = list(map(int, line.strip().split(',')))
                 history.append(viewed_movies)
